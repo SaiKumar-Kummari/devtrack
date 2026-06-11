@@ -396,3 +396,61 @@ Open a [GitHub Discussion](https://github.com/Priyanshu-byte-coder/devtrack/disc
 
 ### Husky Hooks Troubleshooting Guide
 - If prettier-check fails in sandboxed environments, run git commit with --no-verify.
+## Troubleshooting
+
+### Invalid or Missing NEXT_PUBLIC_SUPABASE_URL
+
+Ensure your `.env.local` file contains:
+
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+
+### Incorrect Supabase Keys
+
+Verify that:
+
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+
+are copied correctly from your Supabase project.
+
+### Supabase Migrations Not Applied
+
+If the application reports missing tables or database errors:
+
+- Ensure all migrations have been applied
+- Verify the required tables exist in your Supabase project
+- Restart the development server after applying migrations
+
+### GitHub OAuth Callback Error
+
+Make sure the callback URL is:
+
+http://localhost:3000/api/auth/callback/github
+
+### NEXTAUTH_SECRET Issues
+
+Add:
+
+NEXTAUTH_SECRET=your_secret
+
+to `.env.local`.
+
+### Environment Variables Not Loading
+
+- Verify the file name is `.env.local`
+- Restart the development server
+- Check for spelling mistakes
+
+### Port Conflicts
+
+If port 3000 is already in use:
+
+npm run dev -- -p 3001
+
+### Basic Setup Verification
+
+- Run npm install
+- Configure environment variables
+- Run npm run dev
+- Confirm the application starts without errors
